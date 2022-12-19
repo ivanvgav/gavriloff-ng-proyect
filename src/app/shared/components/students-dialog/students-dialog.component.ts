@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DialogRef } from '@angular/cdk/dialog';
+import { MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { Student } from 'src/app/core/models/student.models';
 
 @Component({
   selector: 'app-students-dialog',
@@ -15,6 +16,15 @@ export class StudentsDialogComponent {
     surname: this.surnameControl,
   })
 
-  constructor(private readonly dialogRef: DialogRef) {}
-  
+  constructor (public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(StudentsDialogComponent, {
+      data: {name: this.nameControl, animal: this.surnameControl},
+    });
+  }
+
+//   onNoClick(): void {
+//     this.dialogRef.close();
+// };
 }

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/core/models/student.models';
 
 @Component({
@@ -16,11 +16,15 @@ export class StudentsDialogComponent {
     surname: this.surnameControl,
   })
 
-  constructor (public dialog: MatDialog) {}
+  constructor (public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: Student | null,) {
+    if (data) {
+      this.studentForm.patchValue(data);
+    }
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(StudentsDialogComponent, {
-      data: {name: this.nameControl, animal: this.surnameControl},
+      data: {name: this.nameControl, surname: this.surnameControl},
     });
   }
 

@@ -23,7 +23,7 @@ export class StudentTableComponent {
   displayedColumns = ['id', 'name', 'surname', 'aproved', 'edit', 'remove']
 
   constructor(private readonly dialogService: MatDialog) {}
-  
+
   addStudent() {
     const dialog = this.dialogService.open(StudentsDialogComponent)
 
@@ -35,4 +35,20 @@ export class StudentTableComponent {
        }
     });
   };
+
+  removeStudent(student: Student) {
+    this.students = this.students.filter((stu) => stu.id !== student.id);
+  }
+
+  editStudent(student: Student) {
+    const dialog = this.dialogService.open(StudentsDialogComponent, {
+      data: student,
+    })
+
+    dialog.afterClosed().subscribe(data) => {
+      if (data) {
+        this.students = this.students.map((stu) => stu.id === student.id ? {...stu, ...data} : stu)
+      }
+    };
+  }
 }

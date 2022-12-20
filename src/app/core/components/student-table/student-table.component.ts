@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from 'src/app/shared/components/students-dialog/students-dialog.component';
 import { Student } from '../../models/student.models';
-import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -45,10 +44,12 @@ export class StudentTableComponent {
       data: student,
     })
 
+    // No se por qué me está tirando error en data
     dialog.afterClosed().subscribe(data) => {
       if (data) {
         this.students = this.students.map((stu) => stu.id === student.id ? {...stu, ...data} : stu)
       }
     };
+    
   }
 }

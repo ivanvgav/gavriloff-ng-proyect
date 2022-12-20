@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MyMaterialModule } from './shared/modules/my-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsDialogComponent } from './shared/components/students-dialog/students-dialog.component';
+import { SideNavbarComponent } from './shared/components/side-navbar/side-navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StudentsDialogComponent } from './shared/components/students-dialog/stu
     StudentTableComponent,
     HeaderComponent,
     StudentsDialogComponent,
+    SideNavbarComponent,
   ],
   imports: [
     BrowserModule,

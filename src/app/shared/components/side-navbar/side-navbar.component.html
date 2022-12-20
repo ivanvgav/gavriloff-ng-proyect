@@ -1,0 +1,12 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Option 1</p>
+    <p>Option 2</p>
+    <p>Option 3</p>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button color="primary" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-drawer-container>
